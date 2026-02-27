@@ -25,8 +25,9 @@ body {
 .section:nth-child(1){ animation-delay: 1s; }
 .section:nth-child(2){ animation-delay: 3s; }
 .section:nth-child(3){ animation-delay: 5s; }
+.section:nth-child(4){ animation-delay: 7s; }
 
-h1 {
+h1, h2 {
     font-size: 32px;
     margin-bottom: 20px;
 }
@@ -54,44 +55,61 @@ img {
 }
 
 .music-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.2);
-    border: none;
-    padding: 12px 18px;
-    border-radius: 30px;
-    color: white;
+    margin: 10px;
+    padding: 12px 20px;
     font-size: 16px;
-    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: none;
+    color: white;
     cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+.music-button:hover{
+    background: rgba(255,255,255,0.4);
 }
 </style>
 </head>
 
 <body>
 
+<!-- بداية صفحة الذكريات -->
 <div class="section">
     <h1>بعض لحظاتنا الجميلة</h1>
     <img src="us.jpg" alt="us">
 </div>
 
 <div class="section">
-    <p>لا أعرف ماذا كان مختلفاً في تلك اللحظة...  
+    <p>لا أعرف ماذا كان مختلفاً في تلك اللحظة...<br>
     لكن شيئاً ما بداخلي أدرك أنك لست مجرد صدفة.</p>
     <img src="Message.jpg" alt="message">
 </div>
 
 <div class="section">
-    <h1>اللحظة اللي تأكدت فيها انك صرتي اقرب حدا لقلبي وانو وجودك هوي حياتي</h1>
+    <h1>اللحظة اللي صرت اعرف فيها انك اقرب حدا لقلبي وانو وجودك صار هوي حياتي</h1>
     <img src="Liebe.jpg" alt="liebe">
 </div>
 
+<!-- السؤال التفاعلي النهائي -->
+<div class="section">
+    <h2>هل تحبيني وبدك تكملي حياتك معي؟ 💍</h2>
+
+    <button class="music-button" onclick="window.location.href='future.html'">
+        نعم… أحبك 💖
+    </button>
+
+    <button class="music-button" style="background:#ff99cc;" onclick="window.location.href='future.html'">
+        اكيد… بعشقك 😍
+    </button>
+</div>
+
+<!-- الموسيقى الخلفية -->
 <audio id="bgMusic" loop>
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-button" onclick="startMusic()">🎵 اضغطي هنا ليبدأ سحرنا</button>
+<button class="music-button" style="position:fixed; bottom:20px; right:20px;" onclick="startMusic()">🎵 اضغطي هنا ليبدأ سحرنا</button>
 
 <script>
 let music = document.getElementById("bgMusic");
@@ -108,7 +126,7 @@ function startMusic() {
         }
     }, 200);
 
-    document.querySelector(".music-button").style.display = "none";
+    document.querySelector("button[onclick='startMusic()']").style.display = "none";
 }
 </script>
 
