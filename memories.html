@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ذكرياتنا</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.section {
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.5s forwards;
+}
+
+.section:nth-child(1){ animation-delay: 1s; }
+.section:nth-child(2){ animation-delay: 3s; }
+.section:nth-child(3){ animation-delay: 5s; }
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: auto;
+}
+
+img {
+    width: 85%;
+    max-width: 400px;
+    margin-top: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.music-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+    <h1>بعض لحظاتنا الجميلة</h1>
+    <img src="us.jpg" alt="us">
+</div>
+
+<div class="section">
+    <p>لا أعرف ماذا كان مختلفاً في تلك اللحظة...  
+    لكن شيئاً ما بداخلي أدرك أنك لست مجرد صدفة.</p>
+    <img src="Message.jpg" alt="message">
+</div>
+
+<div class="section">
+    <h1>اللحظة التي قلت فيها أحبك</h1>
+    <img src="Liebe.jpg" alt="liebe">
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" onclick="startMusic()">🎵 اضغطي هنا ليبدأ سحرنا</button>
+
+<script>
+let music = document.getElementById("bgMusic");
+
+function startMusic() {
+    music.volume = 0;
+    music.play();
+
+    let fade = setInterval(function () {
+        if (music.volume < 0.9) {
+            music.volume += 0.02;
+        } else {
+            clearInterval(fade);
+        }
+    }, 200);
+
+    document.querySelector(".music-button").style.display = "none";
+}
+</script>
+
+</body>
+</html>
