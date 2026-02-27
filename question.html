@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>سؤال واحد فقط</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to bottom right,#fff0f5,#ffe6f0);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+h1{
+    color:#99004d;
+    margin-bottom:40px;
+}
+button{
+    padding:15px 30px;
+    font-size:18px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.yes{
+    background:#ff66b2;
+    color:white;
+}
+.no{
+    background:#cccccc;
+}
+.yes:hover{
+    background:#ff3399;
+}
+</style>
+</head>
+<body>
+
+<h1>هل تعلمين ماذا حدث لي يوم عرفتك؟ 🤍</h1>
+
+<button class="yes" onclick="window.location.href='memories.html'">
+نعم 💖
+</button>
+
+<button class="no" onmouseover="moveButton(this)">
+ما بعرف، منشان قلك 😉
+</button>
+
+<script>
+function moveButton(button){
+    button.style.position="absolute";
+    button.style.top=Math.random()*80+"%";
+    button.style.left=Math.random()*80+"%";
+}
+</script>
+
+</body>
+</html>
