@@ -99,7 +99,7 @@ for(let i=0;i<50;i++){
 </script>
 
 <!-- قسم الذكريات -->
-<div id="memories" class="section" style="display:block;">
+<div id="memories">
     <div class="section">
         <h1>بعض لحظاتنا الجميلة</h1>
         <img src="us.jpg" alt="us">
@@ -167,7 +167,19 @@ function startMusic() {
     document.querySelector("button[onclick='startMusic()']").style.display = "none";
 }
 
-/* الدالة لإظهار قسم المستقبل وإخفاء الذكريات مع تأثير Fade-in */
+/* إظهار أقسام الذكريات تدريجيًا عند تحميل الصفحة */
+window.onload = function() {
+    let sections = document.querySelectorAll("#memories .section");
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = "block";
+        setTimeout(() => {
+            sections[i].style.opacity = 1;
+            sections[i].style.transform = "translateY(0)";
+        }, i * 1500);
+    }
+}
+
+/* إخفاء الذكريات وإظهار المستقبل بتأثير Fade-in */
 function showFuture() {
     document.getElementById("memories").style.display = "none";
 
