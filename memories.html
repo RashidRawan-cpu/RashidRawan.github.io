@@ -13,6 +13,20 @@ body {
     color: white;
     text-align: center;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* النجوم المتحركة */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.5); }
 }
 
 /* جميع الأقسام مخفية افتراضيًا */
@@ -71,6 +85,19 @@ img {
 
 <body>
 
+<!-- نجوم في الخلفية -->
+<script>
+for(let i=0;i<50;i++){
+    let star=document.createElement('div');
+    star.className='star';
+    star.style.width=star.style.height=Math.random()*3+2+'px';
+    star.style.top=Math.random()*100+'%';
+    star.style.left=Math.random()*100+'%';
+    star.style.animationDuration=2+Math.random()*3+'s';
+    document.body.appendChild(star);
+}
+</script>
+
 <!-- قسم الذكريات -->
 <div id="memories" class="section" style="display:block;">
     <div class="section">
@@ -103,7 +130,7 @@ img {
     </div>
 </div>
 
-    <!-- قسم الوعد بالمستقبل -->
+<!-- قسم الوعد بالمستقبل -->
 <div id="future" class="section">
     <h1>وعدي الك انو كفي العمر كلو معك 💍❤️</h1>
     <p>بوعدك ضل معك بكل لحظة، بكل نبضة قلب،  
@@ -140,25 +167,20 @@ function startMusic() {
     document.querySelector("button[onclick='startMusic()']").style.display = "none";
 }
 
-/* الدالة لإظهار قسم المستقبل وإخفاء الذكريات */
+/* الدالة لإظهار قسم المستقبل وإخفاء الذكريات مع تأثير Fade-in */
 function showFuture() {
-    // إخفاء الذكريات
     document.getElementById("memories").style.display = "none";
 
-    // إظهار المستقبل ولكن مخفي تدريجيًا
     let future = document.getElementById("future");
     future.style.display = "block";
     future.style.opacity = 0;
     future.style.transform = "translateY(40px)";
 
-    // تفعيل الانتقال التدريجي بعد قليل
     setTimeout(() => {
         future.style.transition = "opacity 1.5s, transform 1.5s";
         future.style.opacity = 1;
         future.style.transform = "translateY(0)";
     }, 50);
-}
-    }
 }
 </script>
 
