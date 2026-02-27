@@ -15,17 +15,14 @@ body {
     overflow-x: hidden;
 }
 
+/* جميع الأقسام مخفية افتراضيًا */
 .section {
     padding: 60px 20px;
     opacity: 0;
     transform: translateY(40px);
     animation: fadeUp 1.5s forwards;
+    display: none;
 }
-
-.section:nth-child(1){ animation-delay: 1s; }
-.section:nth-child(2){ animation-delay: 3s; }
-.section:nth-child(3){ animation-delay: 5s; }
-.section:nth-child(4){ animation-delay: 7s; }
 
 h1, h2 {
     font-size: 32px;
@@ -74,34 +71,48 @@ img {
 
 <body>
 
-<!-- بداية صفحة الذكريات -->
-<div class="section">
-    <h1>بعض لحظاتنا الجميلة</h1>
-    <img src="us.jpg" alt="us">
+<!-- قسم الذكريات -->
+<div id="memories" class="section" style="display:block;">
+    <div class="section">
+        <h1>بعض لحظاتنا الجميلة</h1>
+        <img src="us.jpg" alt="us">
+    </div>
+
+    <div class="section">
+        <p>لا أعرف ماذا كان مختلفاً في تلك اللحظة...<br>
+        لكن شيئاً ما بداخلي أدرك أنك لست مجرد صدفة.</p>
+        <img src="Message.jpg" alt="message">
+    </div>
+
+    <div class="section">
+        <h1>اللحظة اللي صرت اعرف فيها انك اقرب حدا لقلبي وانو وجودك صار هوي حياتي</h1>
+        <img src="Liebe.jpg" alt="liebe">
+    </div>
+
+    <!-- السؤال التفاعلي -->
+    <div class="section">
+        <h2>هل تحبيني وبدك تكملي حياتك معي؟ 💍</h2>
+
+        <button class="music-button" onclick="showFuture()">
+            نعم… أحبك 💖
+        </button>
+
+        <button class="music-button" style="background:#ff99cc;" onclick="showFuture()">
+            اكيد… بعشقك 😍
+        </button>
+    </div>
 </div>
 
-<div class="section">
-    <p>لا أعرف ماذا كان مختلفاً في تلك اللحظة...<br>
-    لكن شيئاً ما بداخلي أدرك أنك لست مجرد صدفة.</p>
-    <img src="Message.jpg" alt="message">
-</div>
-
-<div class="section">
-    <h1>اللحظة اللي صرت اعرف فيها انك اقرب حدا لقلبي وانو وجودك صار هوي حياتي</h1>
+    <!-- قسم الوعد بالمستقبل -->
+<div id="future" class="section">
+    <h1>وعدي الك انو كفي العمر كلو معك 💍❤️</h1>
+    <p>بوعدك ضل معك بكل لحظة، بكل نبضة قلب،  
+    وبوعدك ضل حبك كل يوم اكثر واكثر،  
+    وكون معك بكل شي حلو أو بشع،  
+    ما خليكي تخافي من شي،  
+    وحقق كل أحلامي معك،  
+    وكون الك وضل الك طول العمر.</p>
     <img src="Liebe.jpg" alt="liebe">
-</div>
-
-<!-- السؤال التفاعلي النهائي -->
-<div class="section">
-    <h2>هل تحبيني وبدك تكملي حياتك معي؟ 💍</h2>
-
-    <button class="music-button" onclick="window.location.href='future.html'">
-        نعم… أحبك 💖
-    </button>
-
-    <button class="music-button" style="background:#ff99cc;" onclick="window.location.href='future.html'">
-        اكيد… بعشقك 😍
-    </button>
 </div>
 
 <!-- الموسيقى الخلفية -->
@@ -127,6 +138,27 @@ function startMusic() {
     }, 200);
 
     document.querySelector("button[onclick='startMusic()']").style.display = "none";
+}
+
+/* الدالة لإظهار قسم المستقبل وإخفاء الذكريات */
+function showFuture() {
+    // إخفاء الذكريات
+    document.getElementById("memories").style.display = "none";
+
+    // إظهار المستقبل ولكن مخفي تدريجيًا
+    let future = document.getElementById("future");
+    future.style.display = "block";
+    future.style.opacity = 0;
+    future.style.transform = "translateY(40px)";
+
+    // تفعيل الانتقال التدريجي بعد قليل
+    setTimeout(() => {
+        future.style.transition = "opacity 1.5s, transform 1.5s";
+        future.style.opacity = 1;
+        future.style.transform = "translateY(0)";
+    }, 50);
+}
+    }
 }
 </script>
 
